@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RecycleGRO</string>
+    <string name="menu_leaderboards">Leaderboard</string>
 </resources>
