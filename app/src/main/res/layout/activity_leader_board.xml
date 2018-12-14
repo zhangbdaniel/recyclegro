@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".LeaderBoardActivity">
 
+    <include
+        android:id="@+id/toolbar_leaderboard"
+        layout="@layout/toolbar_leader_board" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We on the leaderboard page"
+        tools:layout_editor_absoluteX="175dp"
+        tools:layout_editor_absoluteY="319dp" />
 </android.support.constraint.ConstraintLayout>
