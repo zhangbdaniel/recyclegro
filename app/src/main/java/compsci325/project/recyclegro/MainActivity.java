@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.UiSettings;
@@ -59,14 +59,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
         camera = findViewById(R.id.imageButton);
         camera.setVisibility(View.INVISIBLE);
-        camera.setOnClickListener(
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View v){
-                        // <------ Camera view goes here -------->
-                    }
-                }
-        );
+        camera.setOnClickListener( new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                    Intent goToBarcode = new Intent(MainActivity.this, BarcodeReaderActivity.class);
+
+                    startActivity(goToBarcode);
+                }});
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
