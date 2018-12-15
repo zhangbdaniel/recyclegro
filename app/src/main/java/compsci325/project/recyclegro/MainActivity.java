@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -60,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
-
         toolbar.setNavigationIcon(R.drawable.ic_people_outline_black_24dp);
         toolbar.setNavigationOnClickListener(
                 new View.OnClickListener(){
@@ -71,7 +70,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     }
                 }
         );
-
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.g_map);
@@ -108,7 +106,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         inflater.inflate(R.menu.example_menu, menu);
         return true;
-
     }
 
     private void enableMyLocationIfPermitted() {
@@ -197,5 +194,12 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public void onMapClick(LatLng latLng) {
         camera.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menu_leaderboards) {
+        Intent goToLeaderboards = new Intent(this, LeaderBoardActivity.class);
+        startActivity(goToLeaderboards);
+        return false;
     }
 }
