@@ -9,29 +9,36 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class Adapter extends RecyclerView.Adapter<Adapter.MyViewHolder> {
+public class Adapter extends RecyclerView.Adapter<Adapter.FriendsViewHolder> {
     private List<User> youZer;
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
+
+    public static class FriendsViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
-        public MyViewHolder(@NonNull View recyclerView) {
+
+        public FriendsViewHolder(@NonNull View recyclerView) {
             super(recyclerView);
             name = (TextView) recyclerView.findViewById(R.id.friend_name);
         }
     }
+
     public Adapter(List<User> myDataset) {
         youZer = myDataset;
     }
+
     @NonNull
     @Override
-    public Adapter.MyViewHolder onCreateViewHolder(ViewGroup views, int i) {
-        View recyclerView = LayoutInflater.from(views.getContext()).inflate(R.layout.recycler_view_item, views, false);
-        return new MyViewHolder(recyclerView);
+    public Adapter.FriendsViewHolder onCreateViewHolder(@NonNull ViewGroup views, int i) {
+        View recyclerView = LayoutInflater.from(views.getContext())
+                .inflate(R.layout.friends_card_layout, views, false);
+        return new FriendsViewHolder(recyclerView);
     }
+
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder friendsListViewHolder, int position) {
+    public void onBindViewHolder(@NonNull FriendsViewHolder friendsListViewHolder, int position) {
         User person = youZer.get(position);
         friendsListViewHolder.name.setText(person.getFullName());
     }
+
     @Override
     public int getItemCount() {
         return youZer.size();

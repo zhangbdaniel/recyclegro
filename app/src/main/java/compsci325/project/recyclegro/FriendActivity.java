@@ -1,15 +1,23 @@
 package compsci325.project.recyclegro;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FriendActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    private Adapter adapter;
     private RecyclerView.LayoutManager manager;
     private List<User> youZer;
 
@@ -17,11 +25,48 @@ public class FriendActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friend);
-        recyclerView.setHasFixedSize(true);
-        manager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(manager);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_friends);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_24dp);
+        toolbar.setNavigationOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        finish();
+                    }
+                }
+        );
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        youZer = new ArrayList<User>();
         adapter = new Adapter(youZer);
+        manager = new LinearLayoutManager(getApplicationContext());
+
+        recyclerView.setLayoutManager(manager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapter);
+
+        prepareUser();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+
+        inflater.inflate(R.menu.friends_menu, menu);
+        return true;
+
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menu_leaderboards) {
+        Intent goToFriends = new Intent(this, FriendActivity.class);
+        startActivity(goToFriends);
+        return false;
     }
 
     private void prepareUser() {
