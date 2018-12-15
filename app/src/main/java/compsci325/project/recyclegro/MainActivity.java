@@ -1,4 +1,5 @@
 package compsci325.project.recyclegro;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -45,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menu_leaderboards) {
-        //<---- leaderboards code goes here ------->
-        return true;
+        Intent goToLeaderboards = new Intent(this, LeaderBoardActivity.class);
+        startActivity(goToLeaderboards);
+        return false;
     }
 }
