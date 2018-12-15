@@ -71,11 +71,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         toolbar.setNavigationIcon(R.drawable.ic_people_outline_black_24dp);
-        toolbar.setNavigationOnClickListener(
-                new View.OnClickListener(){
+        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
                     @Override
                     public void onClick(View v){
-                        //<--- link to friends page goes here ---->
+                        Intent goToFriends = new Intent(MainActivity.this, FriendActivity.class);
+                        startActivity(goToFriends);
                     }
                 }
         );
