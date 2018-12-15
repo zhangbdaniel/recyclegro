@@ -53,7 +53,10 @@ public class BarcodeReaderActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (intentData.length() > 0) {
-                    Toast.makeText(getApplicationContext(), "Found.", Toast.LENGTH_SHORT).show();
+                    Intent goToHome = new Intent(BarcodeReaderActivity.this, MainActivity.class);
+
+                    startActivity(goToHome);
+                    Toast.makeText(getApplicationContext(), "Thank you for saving the environment! 20 Points!", Toast.LENGTH_SHORT).show();
                     }
                     else {
                     Toast.makeText(getApplicationContext(), "Barcode Corrupt!", Toast.LENGTH_SHORT).show();
@@ -109,7 +112,7 @@ public class BarcodeReaderActivity extends AppCompatActivity {
         barcodeDetector.setProcessor(new Detector.Processor<Barcode>() {
             @Override
             public void release() {
-                Toast.makeText(getApplicationContext(), "To prevent memory leaks barcode scanner has been stopped", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
