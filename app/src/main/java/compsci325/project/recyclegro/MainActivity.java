@@ -1,4 +1,5 @@
 package compsci325.project.recyclegro;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,6 +22,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
 
 
 import com.google.android.gms.common.GoogleApiAvailability;
@@ -39,14 +42,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMapClickListener{
 
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private GoogleMap mMap;
     ImageButton camera;
     private Marker mTrash;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
         camera = findViewById(R.id.imageButton);
         camera.setVisibility(View.INVISIBLE);
@@ -98,7 +107,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         mMap.setOnMarkerClickListener(this);
         mMap.setOnMapClickListener(this);
+
     }
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
@@ -202,4 +214,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(goToLeaderboards);
         return false;
     }
+
+
+
+
+
 }
