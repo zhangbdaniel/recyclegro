@@ -64,7 +64,7 @@ public class FriendActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menu_leaderboards) {
-        Intent goToFriends = new Intent(this, FriendActivity.class);
+        Intent goToFriends = new Intent(this, AddFriendActivity.class);
         startActivity(goToFriends);
         return false;
     }
