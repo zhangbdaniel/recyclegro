@@ -125,20 +125,16 @@ public class BarcodeReaderActivity extends AppCompatActivity {
 
                         @Override
                         public void run() {
-
-                            if (barcodes.valueAt(0).email != null) {
-                                txtBarcodeValue.removeCallbacks(null);
-                                intentData = barcodes.valueAt(0).email.address;
-                                txtBarcodeValue.setText(intentData);
-                                isEmail = true;
-                                btnAction.setText("ADD CONTENT TO THE MAIL");
-                            } else {
-                                isEmail = false;
-                                btnAction.setText("ADD POINTS");
-                                intentData = barcodes.valueAt(0).rawValue;
-                                txtBarcodeValue.setText(intentData);
-
+                            btnAction.setText("ADD POINTS");
+                            String bottleid = barcodes.valueAt(0).rawValue;
+                            if (bottleid == "075720481279") {
+                                txtBarcodeValue.setText("Poland Spring Water Bottle");
                             }
+                            else {
+                                txtBarcodeValue.setText("Bottle Found!");
+                            }
+                            int lime=0xff00ff00;
+                            btnAction.setBackgroundColor(lime);
                         }
                     });
 
