@@ -1,8 +1,6 @@
 package compsci325.project.recyclegro;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,6 +14,7 @@ import java.util.List;
 
 public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.AddFriendViewHolder> {
     private List<User> userList;
+    private List<User> searchList;
 
     public static class AddFriendViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
@@ -48,7 +47,10 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.AddF
         friendsListViewHolder.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userList.remove(position);
+                User user = userList.remove(position);
+                if (searchList.contains(user)) {
+                    searchList.remove(user);
+                }
                 Activity activity = ((Activity)v.getContext());
                 Toast.makeText(activity, "Friend request to " + person.getFullName() + " has been sent!", Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged();
@@ -59,5 +61,13 @@ public class AddFriendAdapter extends RecyclerView.Adapter<AddFriendAdapter.AddF
     @Override
     public int getItemCount() {
         return userList.size();
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
+
+    public void setSearchList(List<User> searchList){
+        this.searchList = searchList;
     }
 }
